@@ -11,7 +11,7 @@ Every Taskade workspace is built from four types of DNA:
 | **Memory** | `projects/` | Structured data — task trees, checklists, notes |
 | **Intelligence** | `agents/` | AI agents with custom commands and personas |
 | **Reflexes** | `automations/` | Trigger-action workflows connecting services |
-| **Interface** | *(coming soon)* | Generated app UI via Parade engine |
+| **Interface** | `apps/` | Genesis app UI — React components via Parade engine |
 
 This repo contains one JSON file per DNA item — the same format that Taskade uses internally. No build toolchain required to understand or edit.
 
@@ -48,6 +48,8 @@ taskade-sample-app/
 ├── projects/
 │   ├── getting-started.json   # Onboarding checklist
 │   └── roadmap.json           # Product roadmap with phases
+├── apps/
+│   └── hello-world.json       # Sample Genesis app (React + Tailwind)
 ├── media/
 │   └── icon.svg               # App icon
 ├── scripts/
@@ -68,6 +70,7 @@ GitHub Repo                    Taskade Workspace Tab
 agents/*.json          ──►     [Agents] filter pill
 automations/*.json     ──►     [Automations] filter pill
 projects/*.json        ──►     [Projects] filter pill
+apps/*.json            ──►     [Apps] Genesis app UI
 ```
 
 Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` uses. You can:
@@ -120,7 +123,23 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
    }
    ```
 
-4. Run `npm run build` to assemble and validate.
+4. **Add a Genesis app**: Create `apps/my-app.json` with a `FileSystemTree`:
+   ```json
+   {
+     "src": {
+       "directory": {
+         "App.tsx": {
+           "file": {
+             "contents": "import * as React from 'react';\nexport default function App() {\n  return <div>Hello World</div>;\n}\n"
+           }
+         }
+       }
+     }
+   }
+   ```
+   The file system tree mirrors the Parade base template structure. Each file node has `{ file: { contents: "..." } }` and directories use `{ directory: { ... } }`.
+
+5. Run `npm run build` to assemble and validate.
 
 ## Environment Variables
 

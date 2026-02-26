@@ -284,7 +284,26 @@ if (fs.existsSync(projectsDir)) {
   pass('No projects/ directory (optional)');
 }
 
-// 5. Validate assembled workspace.json if it exists
+// 5. Validate individual app files (FileSystemTree)
+console.log('\nValidating apps/...');
+const appsDir = path.join(ROOT, 'apps');
+const FileSystemTreeZchema = z.record(z.string(), z.any());
+if (fs.existsSync(appsDir)) {
+  for (const file of fs.readdirSync(appsDir).filter((f) => f.endsWith('.json'))) {
+    const data = JSON.parse(fs.readFileSync(path.join(appsDir, file), 'utf-8'));
+    const result = FileSystemTreeZchema.safeParse(data);
+    if (result.success) {
+      const fileCount = JSON.stringify(data).split('"file"').length - 1;
+      pass(`${file} (${fileCount} files)`);
+    } else {
+      fail(`${file}: ${result.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join(', ')}`);
+    }
+  }
+} else {
+  pass('No apps/ directory (optional)');
+}
+
+// 6. Validate assembled workspace.json if it exists
 const workspacePath = path.join(ROOT, 'dist', 'workspace.json');
 if (fs.existsSync(workspacePath)) {
   console.log('\nValidating dist/workspace.json...');

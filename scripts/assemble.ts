@@ -1,5 +1,5 @@
 /**
- * Assembles individual JSON files from agents/, automations/, projects/
+ * Assembles individual JSON files from agents/, automations/, projects/, apps/
  * into a single SpaceBundleData workspace.json file.
  *
  * Usage: npx tsx scripts/assemble.ts
@@ -21,13 +21,20 @@ interface SpaceBundleData {
 function readJsonFiles(dir: string): Array<{ name: string; data: unknown }> {
   const fullPath = path.join(ROOT, dir);
   if (!fs.existsSync(fullPath)) return [];
-  return fs
-    .readdirSync(fullPath)
-    .filter((f) => f.endsWith('.json'))
-    .map((f) => ({
-      name: path.basename(f, '.json'),
-      data: JSON.parse(fs.readFileSync(path.join(fullPath, f), 'utf-8')),
-    }));
+  const results: Array<{ name: string; data: unknown }> = [];
+  for (const f of fs.readdirSync(fullPath).filter((f) => f.endsWith('.json'))) {
+    const filePath = path.join(fullPath, f);
+    try {
+      results.push({
+        name: path.basename(f, '.json'),
+        data: JSON.parse(fs.readFileSync(filePath, 'utf-8')),
+      });
+    } catch (err) {
+      console.error(`Error: Failed to parse ${dir}/${f}: ${(err as Error).message}`);
+      process.exit(1);
+    }
+  }
+  return results;
 }
 
 function generateRank(index: number): string {
@@ -79,6 +86,17 @@ for (const { name, data } of readJsonFiles('projects')) {
   };
 }
 
+// Apps (Genesis app file systems)
+for (const { name, data } of readJsonFiles('apps')) {
+  const id = `app-${name}`;
+  items[id] = {
+    type: 'space-bundle-app-item',
+    appId: id,
+    rank: generateRank(rankIndex++),
+    files: data,
+  };
+}
+
 const bundle: SpaceBundleData = {
   version: '1',
   name: manifest.name,
@@ -97,5 +115,6 @@ const counts = {
   agents: Object.values(items).filter((i: any) => i.type === 'space-bundle-agent-item').length,
   automations: Object.values(items).filter((i: any) => i.type === 'space-bundle-flow-item').length,
   projects: Object.values(items).filter((i: any) => i.type === 'space-bundle-project-item').length,
+  apps: Object.values(items).filter((i: any) => i.type === 'space-bundle-app-item').length,
 };
-console.log(`  Agents: ${counts.agents}, Automations: ${counts.automations}, Projects: ${counts.projects}`);
+console.log(`  Agents: ${counts.agents}, Automations: ${counts.automations}, Projects: ${counts.projects}, Apps: ${counts.apps}`);
