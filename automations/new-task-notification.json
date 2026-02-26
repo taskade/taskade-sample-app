@@ -1,0 +1,25 @@
+{
+  "version": "2",
+  "flowTitle": "New Task Notification",
+  "trigger": {
+    "type": "WEBHOOK",
+    "displayName": "On New Task",
+    "valid": true,
+    "settings": {}
+  },
+  "actions": [
+    {
+      "type": "PIECE",
+      "displayName": "Send Slack Notification",
+      "valid": true,
+      "settings": {
+        "pieceName": "@taskade/piece-slack",
+        "actionName": "send_message",
+        "input": {
+          "channel": "#tasks",
+          "message": "A new task has been created and needs attention."
+        }
+      }
+    }
+  ]
+}

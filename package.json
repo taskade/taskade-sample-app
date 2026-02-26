@@ -1,0 +1,30 @@
+{
+  "name": "taskade-sample-app",
+  "version": "1.0.0",
+  "description": "Taskade Genesis App Kit Template — Build, validate, and import Workspace DNA bundles",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "npx tsx scripts/validate.ts",
+    "assemble": "npx tsx scripts/assemble.ts",
+    "import": "npx tsx scripts/import.ts",
+    "build": "npm run assemble && npm run validate"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "zod": "^3.22.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taskade/taskade-sample-app.git"
+  },
+  "keywords": [
+    "taskade",
+    "genesis",
+    "workspace-dna",
+    "ai-agent",
+    "automation"
+  ]
+}

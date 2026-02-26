@@ -1,0 +1,24 @@
+{
+  "version": "2",
+  "flowTitle": "Weekly Digest",
+  "trigger": {
+    "type": "WEBHOOK",
+    "displayName": "Webhook Trigger",
+    "valid": true,
+    "settings": {}
+  },
+  "actions": [
+    {
+      "type": "PIECE",
+      "displayName": "Summarize with AI",
+      "valid": true,
+      "settings": {
+        "pieceName": "@taskade/piece-taskade",
+        "actionName": "ask_agent",
+        "input": {
+          "prompt": "Summarize the key updates and action items from this week into a concise digest with bullet points."
+        }
+      }
+    }
+  ]
+}

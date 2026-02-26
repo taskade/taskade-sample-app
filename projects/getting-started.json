@@ -1,0 +1,138 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "text",
+      "id": "root-node",
+      "text": {
+        "ops": [
+          { "insert": "Getting Started with Taskade Genesis" },
+          { "insert": "\n", "attributes": { "paragraph": true } }
+        ]
+      },
+      "format": { "node": "h1", "children": null },
+      "children": [
+        {
+          "type": "text",
+          "id": "section-overview",
+          "text": {
+            "ops": [
+              { "insert": "Overview" },
+              { "insert": "\n", "attributes": { "paragraph": true } }
+            ]
+          },
+          "format": { "node": "h2", "children": null },
+          "children": [
+            {
+              "type": "text",
+              "id": "overview-desc",
+              "text": {
+                "ops": [
+                  { "insert": "This project is part of a sample Genesis app. It demonstrates how Projects (Memory), Agents (Intelligence), and Automations (Reflexes) work together as Workspace DNA." },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "section-setup",
+          "text": {
+            "ops": [
+              { "insert": "Setup Checklist" },
+              { "insert": "\n", "attributes": { "paragraph": true } }
+            ]
+          },
+          "format": { "node": "h2", "children": "checkbox" },
+          "children": [
+            {
+              "type": "text",
+              "id": "task-fork",
+              "text": {
+                "ops": [
+                  { "insert": "Fork the taskade-sample-app repo" },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "completed": false,
+              "children": []
+            },
+            {
+              "type": "text",
+              "id": "task-customize",
+              "text": {
+                "ops": [
+                  { "insert": "Customize agents and automations" },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "completed": false,
+              "children": []
+            },
+            {
+              "type": "text",
+              "id": "task-validate",
+              "text": {
+                "ops": [
+                  { "insert": "Run npm run validate to check your bundle" },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "completed": false,
+              "children": []
+            },
+            {
+              "type": "text",
+              "id": "task-import",
+              "text": {
+                "ops": [
+                  { "insert": "Import into Taskade with npm run import" },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "completed": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "section-resources",
+          "text": {
+            "ops": [
+              { "insert": "Resources" },
+              { "insert": "\n", "attributes": { "paragraph": true } }
+            ]
+          },
+          "format": { "node": "h2", "children": null },
+          "children": [
+            {
+              "type": "text",
+              "id": "resource-docs",
+              "text": {
+                "ops": [
+                  { "insert": "Taskade API Docs: https://taskade.com/api/documentation/v1" },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "children": []
+            },
+            {
+              "type": "text",
+              "id": "resource-mcp",
+              "text": {
+                "ops": [
+                  { "insert": "MCP Server: https://github.com/taskade/mcp" },
+                  { "insert": "\n", "attributes": { "paragraph": true } }
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
