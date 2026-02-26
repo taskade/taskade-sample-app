@@ -8,6 +8,7 @@
     "validate": "npx tsx scripts/validate.ts",
     "assemble": "npx tsx scripts/assemble.ts",
     "import": "npx tsx scripts/import.ts",
+    "export": "npx tsx scripts/export.ts",
     "build": "npm run assemble && npm run validate"
   },
   "devDependencies": {

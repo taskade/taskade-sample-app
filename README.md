@@ -32,6 +32,9 @@ npm run build
 
 # 5. Import into Taskade
 TASKADE_API_TOKEN=tskdp_... TASKADE_WORKSPACE_ID=... npm run import
+
+# Or export an existing workspace into this repo
+TASKADE_API_TOKEN=tskdp_... TASKADE_WORKSPACE_ID=... npm run export
 ```
 
 ## Repo Structure
@@ -82,6 +85,7 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
 
 | Command | What it does |
 |---------|-------------|
+| `npm run export` | Pull a workspace into local JSON files |
 | `npm run validate` | Validates all JSON files against Taskade schemas |
 | `npm run assemble` | Combines all items into `dist/workspace.json` |
 | `npm run build` | Assemble + validate (both steps) |
