@@ -159,7 +159,6 @@ Get your API token at [taskade.com/settings/api](https://taskade.com/settings/ap
 
 - [Taskade API Docs](https://taskade.com/api/documentation/v1)
 - [Taskade MCP Server](https://github.com/taskade/mcp) (109+ stars)
-- [Issue #25542](https://github.com/taskade/taskcade/issues/25542) — The vision behind this repo
 
 ## License
 
