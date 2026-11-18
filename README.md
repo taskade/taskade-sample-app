@@ -1,6 +1,8 @@
 # taskade-sample-app
 
-A sample [Taskade](https://taskade.com) Genesis App Kit demonstrating **Workspace DNA** — the portable format for AI-powered workspaces.
+[Taskade](https://www.taskade.com) is an AI-native workspace where one prompt builds a running app with its own data, AI agents and automations.
+
+[Taskade Genesis](https://www.taskade.com/create) turns one prompt into a running app: projects store the data, AI agents do the thinking, automations run the work across 100+ integrations, and the interface is built for you. This repo is a sample Taskade Genesis App Kit. It shows **Workspace DNA**, the portable format for AI-powered workspaces.
 
 ## What is Workspace DNA?
 
@@ -153,12 +155,17 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
 | `TASKADE_WORKSPACE_ID` | For import | Target workspace ID |
 | `TASKADE_API_URL` | No | API base URL (default: `https://taskade.com`) |
 
-Get your API token at [taskade.com/settings/api](https://taskade.com/settings/api).
+Get your API token at [taskade.com/settings/api](https://www.taskade.com/settings/api).
 
 ## Related
 
-- [Taskade API Docs](https://taskade.com/api/documentation/v1)
-- [Taskade MCP Server](https://github.com/taskade/mcp) (109+ stars)
+- [Build an app with Taskade Genesis](https://www.taskade.com/create)
+- [AI app builder](https://www.taskade.com/ai/apps)
+- [AI agents](https://www.taskade.com/ai/agents)
+- [Community apps you can clone](https://www.taskade.com/apps)
+- [Hosted MCP server](https://www.taskade.com/mcp)
+- [Taskade API Docs](https://www.taskade.com/api/documentation/v1)
+- [Taskade MCP Server on GitHub](https://github.com/taskade/mcp)
 
 ## License
 
