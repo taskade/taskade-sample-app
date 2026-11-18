@@ -1,44 +1,53 @@
 # taskade-sample-app
 
-[Taskade](https://www.taskade.com) is an AI-native workspace where one prompt builds a running app with its own data, AI agents and automations.
+A template for your own Taskade Genesis App Kit: projects, AI agents, automations and app UI as JSON files that you edit here and import into a Taskade workspace.
 
-[Taskade Genesis](https://www.taskade.com/create) turns one prompt into a running app: projects store the data, AI agents do the thinking, automations run the work across 100+ integrations, and the interface is built for you. This repo is a sample Taskade Genesis App Kit. It shows **Workspace DNA**, the portable format for AI-powered workspaces.
+<p align="center">
+  <a href="https://www.taskade.com/create"><img src="https://www.taskade.com/static_images/workspace-dna.gif" alt="One Taskade Genesis app and its parts: an event sign-up page with its AI assistant chat, the projects list, a table of registrations, three AI agents and a list of automations" width="640"></a>
+</p>
 
-## What is Workspace DNA?
-
-Workspace DNA has three parts: Memory, Intelligence and Execution. The app interface sits on top of them:
-
-| Layer | Folder | What it does |
-|-------|--------|-------------|
-| **Memory** | `projects/` | Structured data — task trees, checklists, notes |
-| **Intelligence** | `agents/` | AI agents with custom commands and personas |
-| **Execution** | `automations/` | Trigger-action workflows connecting services |
-| **Interface** | `apps/` | Taskade Genesis app UI — React components that the app engine runs |
-
-This repo contains one JSON file per DNA item — the same format that the Taskade bundle import and export API uses. No build toolchain required to understand or edit.
+> **This repository is a template for your own App Kit.** Fork or clone it, change the JSON files and import the result into your workspace.
+> Found a problem with the template or its scripts? [Open an issue in this repository](https://github.com/taskade/taskade-sample-app/issues). For a problem with the Taskade product, open an issue at [taskade/taskade](https://github.com/taskade/taskade/issues).
 
 ## Quick Start
 
 ```bash
-# 1. Fork this repo (or click "Use this template")
+# 1. Fork or clone this repository
 gh repo fork taskade/taskade-sample-app --clone
+# or: git clone https://github.com/taskade/taskade-sample-app.git
 cd taskade-sample-app
 
 # 2. Install dependencies
 npm install
 
-# 3. Validate your JSON files
-npm run validate
-
-# 4. Assemble into a single workspace.json
+# 3. Assemble dist/workspace.json and validate every file
 npm run build
 
-# 5. Import into Taskade
+# 4. Import into Taskade
 TASKADE_API_TOKEN=tskdp_... TASKADE_WORKSPACE_ID=... npm run import
 
 # Or export an existing workspace into this repo
 TASKADE_API_TOKEN=tskdp_... TASKADE_WORKSPACE_ID=... npm run export
 ```
+
+Steps 1 to 3 need no Taskade account. Step 4 and the export need a Personal Access Token, see [Environment Variables](#environment-variables).
+
+## What is Workspace DNA?
+
+[Taskade](https://www.taskade.com) is an AI-native workspace where one prompt builds a running app with its own data, AI agents and automations.
+
+[Taskade Genesis](https://www.taskade.com/create) turns one prompt into a running app: projects store the data, AI agents do the thinking, automations run the work across 100+ integrations, and the interface is built for you. This repo is a sample Taskade Genesis App Kit. It stores the **Workspace DNA** of one app as files.
+
+Workspace DNA has three parts: Memory, Intelligence and Execution. The app interface sits on top of them:
+
+| Layer | Folder | What it does |
+|-------|--------|-------------|
+| **Memory** | `projects/` | Structured data: task trees, checklists, notes |
+| **Intelligence** | `agents/` | AI agents with custom commands and personas |
+| **Execution** | `automations/` | Trigger-action workflows connecting services |
+| **Interface** | `apps/` | Taskade Genesis app UI: React components that the app engine runs |
+
+This repo contains one JSON file per DNA item, in the same format that the Taskade bundle import and export API uses. No build toolchain required to understand or edit.
 
 ## Repo Structure
 
@@ -84,6 +93,12 @@ Each JSON file is the same data shape that the Taskade bundle API uses (`SpaceBu
 - **Export** a workspace from Taskade → get these JSON files
 - **Edit** the JSON files in any editor
 - **Import** back into Taskade → get a working workspace
+
+Each published App Kit in the [Taskade App Factory](https://www.taskade.com/apps) shows the same parts, with a **Clone App Kit** button that copies them into your workspace:
+
+<p align="center">
+  <a href="https://www.taskade.com/apps"><img src="https://www.taskade.com/static_images/newsletter-gifs/2026-04-14-app-kits-share-publish.gif" alt="An App Kit page in the Taskade App Factory: the Recipe Planner Studio app beside its projects, agents, automations and media, with a Clone App Kit button" width="640"></a>
+</p>
 
 ## Scripts
 
@@ -172,3 +187,7 @@ Get your API token at [taskade.com/settings/api](https://www.taskade.com/setting
 ## License
 
 MIT
+
+---
+
+[Build an app from a prompt](https://www.taskade.com/create) · [Taskade App Factory](https://www.taskade.com/apps) · [Docs](https://www.taskade.com/docs) · [Agent skills](https://github.com/taskade/skills) · [MCP server](https://github.com/taskade/mcp)
