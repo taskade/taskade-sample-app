@@ -86,7 +86,7 @@ for (const { name, data } of readJsonFiles('projects')) {
   };
 }
 
-// Apps (Genesis app file systems)
+// Apps (Taskade Genesis app file systems)
 for (const { name, data } of readJsonFiles('apps')) {
   const id = `app-${name}`;
   items[id] = {

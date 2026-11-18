@@ -6,22 +6,23 @@
 
 ## What is Workspace DNA?
 
-Every Taskade workspace is built from four types of DNA:
+Workspace DNA has three parts: Memory, Intelligence and Execution. The app interface sits on top of them:
 
 | Layer | Folder | What it does |
 |-------|--------|-------------|
 | **Memory** | `projects/` | Structured data — task trees, checklists, notes |
 | **Intelligence** | `agents/` | AI agents with custom commands and personas |
-| **Reflexes** | `automations/` | Trigger-action workflows connecting services |
-| **Interface** | `apps/` | Genesis app UI — React components via Parade engine |
+| **Execution** | `automations/` | Trigger-action workflows connecting services |
+| **Interface** | `apps/` | Taskade Genesis app UI — React components that the app engine runs |
 
-This repo contains one JSON file per DNA item — the same format that Taskade uses internally. No build toolchain required to understand or edit.
+This repo contains one JSON file per DNA item — the same format that the Taskade bundle import and export API uses. No build toolchain required to understand or edit.
 
 ## Quick Start
 
 ```bash
 # 1. Fork this repo (or click "Use this template")
-gh repo fork taskade/taskade-sample-app
+gh repo fork taskade/taskade-sample-app --clone
+cd taskade-sample-app
 
 # 2. Install dependencies
 npm install
@@ -54,31 +55,32 @@ taskade-sample-app/
 │   ├── getting-started.json   # Onboarding checklist
 │   └── roadmap.json           # Product roadmap with phases
 ├── apps/
-│   └── hello-world.json       # Sample Genesis app (React + Tailwind)
+│   └── hello-world.json       # Sample Taskade Genesis app (React + Tailwind)
 ├── media/
 │   └── icon.svg               # App icon
 ├── scripts/
 │   ├── assemble.ts            # Combines folders → workspace.json
 │   ├── validate.ts            # Validates against SpaceBundleData schema
-│   └── import.ts              # Uploads to Taskade via API
+│   ├── import.ts              # Uploads to Taskade via API
+│   └── export.ts              # Downloads a workspace via API
 └── dist/                      # (generated) assembled bundle
     └── workspace.json
 ```
 
 ## How It Maps to Taskade
 
-The folder structure mirrors the Workspace tab in Taskade:
+Each folder maps to one part of a Taskade workspace:
 
 ```
-GitHub Repo                    Taskade Workspace Tab
-═══════════                    ═════════════════════
-agents/*.json          ──►     [Agents] filter pill
-automations/*.json     ──►     [Automations] filter pill
-projects/*.json        ──►     [Projects] filter pill
-apps/*.json            ──►     [Apps] Genesis app UI
+GitHub Repo                    Taskade Workspace
+═══════════                    ═════════════════
+agents/*.json          ──►     AI agents
+automations/*.json     ──►     Automations
+projects/*.json        ──►     Projects
+apps/*.json            ──►     Taskade Genesis app UI
 ```
 
-Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` uses. You can:
+Each JSON file is the same data shape that the Taskade bundle API uses (`SpaceBundleData` v1). You can:
 - **Export** a workspace from Taskade → get these JSON files
 - **Edit** the JSON files in any editor
 - **Import** back into Taskade → get a working workspace
@@ -87,7 +89,7 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
 
 | Command | What it does |
 |---------|-------------|
-| `npm run export` | Pull a workspace into local JSON files |
+| `npm run export` | Pull a workspace into local JSON files (bundle export needs the Pro plan or higher, see [pricing](https://www.taskade.com/pricing)) |
 | `npm run validate` | Validates all JSON files against Taskade schemas |
 | `npm run assemble` | Combines all items into `dist/workspace.json` |
 | `npm run build` | Assemble + validate (both steps) |
@@ -129,7 +131,7 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
    }
    ```
 
-4. **Add a Genesis app**: Create `apps/my-app.json` with a `FileSystemTree`:
+4. **Add a Taskade Genesis app**: Create `apps/my-app.json` with a `FileSystemTree`:
    ```json
    {
      "src": {
@@ -143,7 +145,7 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
      }
    }
    ```
-   The file system tree mirrors the Parade base template structure. Each file node has `{ file: { contents: "..." } }` and directories use `{ directory: { ... } }`.
+   The file system tree mirrors the file structure of a Taskade Genesis app. Each file node has `{ file: { contents: "..." } }` and directories use `{ directory: { ... } }`.
 
 5. Run `npm run build` to assemble and validate.
 
@@ -151,9 +153,9 @@ Each JSON file is the same data shape that Taskade's internal `SpaceBundleData` 
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `TASKADE_API_TOKEN` | For import | Personal Access Token (`tskdp_...`) |
-| `TASKADE_WORKSPACE_ID` | For import | Target workspace ID |
-| `TASKADE_API_URL` | No | API base URL (default: `https://taskade.com`) |
+| `TASKADE_API_TOKEN` | For import and export | Personal Access Token (`tskdp_...`) |
+| `TASKADE_WORKSPACE_ID` | For import and export | Target or source workspace ID |
+| `TASKADE_API_URL` | No | API base URL (default: `https://www.taskade.com`) |
 
 Get your API token at [taskade.com/settings/api](https://www.taskade.com/settings/api).
 
@@ -162,8 +164,8 @@ Get your API token at [taskade.com/settings/api](https://www.taskade.com/setting
 - [Build an app with Taskade Genesis](https://www.taskade.com/create)
 - [AI app builder](https://www.taskade.com/ai/apps)
 - [AI agents](https://www.taskade.com/ai/agents)
-- [Community apps you can clone](https://www.taskade.com/apps)
-- [Hosted MCP server](https://www.taskade.com/mcp)
+- [Taskade App Factory: App Kits you can clone](https://www.taskade.com/apps)
+- [Hosted MCP server](https://www.taskade.com/docs/mcp/hosted-mcp) at `https://www.taskade.com/mcp`, part of every paid plan
 - [Taskade API Docs](https://www.taskade.com/api/documentation/v1)
 - [Taskade MCP Server on GitHub](https://github.com/taskade/mcp)
 

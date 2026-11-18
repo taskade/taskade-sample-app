@@ -15,7 +15,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const API_BASE = process.env.TASKADE_API_URL ?? 'https://taskade.com';
+const API_BASE = process.env.TASKADE_API_URL ?? 'https://www.taskade.com';
 const API_TOKEN = process.env.TASKADE_API_TOKEN;
 const WORKSPACE_ID = process.env.TASKADE_WORKSPACE_ID;
 
@@ -27,7 +27,7 @@ if (!API_TOKEN) {
 
 if (!WORKSPACE_ID) {
   console.error('Error: TASKADE_WORKSPACE_ID environment variable is required.');
-  console.error('Find your workspace ID in the workspace URL: https://taskade.com/ws/<workspace-id>');
+  console.error('Find your workspace ID in the workspace URL: https://www.taskade.com/spaces/<workspace-id>');
   process.exit(1);
 }
 

@@ -77,7 +77,7 @@
               "id": "task-p2-1",
               "text": {
                 "ops": [
-                  { "insert": "Publish to community gallery" },
+                  { "insert": "Publish to Taskade App Factory" },
                   { "insert": "\n", "attributes": { "paragraph": true } }
                 ]
               },

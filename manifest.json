@@ -3,7 +3,7 @@
   "name": "Taskade Sample App",
   "version": "1.0.0",
   "author": "taskade",
-  "description": "A sample Genesis app demonstrating Workspace DNA: agents, automations, and projects working together.",
+  "description": "A sample Taskade Genesis app demonstrating Workspace DNA: agents, automations, and projects working together.",
   "tags": ["sample", "getting-started", "genesis"],
   "icon": "media/icon.svg",
   "minPlatformVersion": "2025.1"

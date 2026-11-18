@@ -28,7 +28,7 @@
               "id": "overview-desc",
               "text": {
                 "ops": [
-                  { "insert": "This project is part of a sample Genesis app. It demonstrates how Projects (Memory), Agents (Intelligence), and Automations (Reflexes) work together as Workspace DNA." },
+                  { "insert": "This project is part of a sample Taskade Genesis app. It demonstrates how Projects (Memory), Agents (Intelligence), and Automations (Execution) work together as Workspace DNA." },
                   { "insert": "\n", "attributes": { "paragraph": true } }
                 ]
               },
